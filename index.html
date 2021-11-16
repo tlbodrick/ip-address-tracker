@@ -13,32 +13,34 @@
 </head>
 
 <body>
-    <h1>IP Address Tracker</h1>
-    <main>
-        <form action="/" class="submit">
-            <input type="text" name="" id="searchBar"><button id="submitBtn"><img src="/images/icon-arrow.svg" alt=""
-                    id="buttonImg"></button>
-        </form>
-        <div id="trackInfo">
-            <div>
-                <span class="infoTitle">ip address</span>
-                <span id="ipAddress"></span>
+    <div id="container">
+        <h1>IP Address Tracker</h1>
+        <main>
+            <form action="/" class="submit">
+                <input type="text" name="" id="searchBar"><button id="submitBtn"><img src="/images/icon-arrow.svg"
+                        alt="" id="buttonImg"></button>
+            </form>
+            <div id="trackInfo">
+                <div>
+                    <p class="infoTitle">ip address</p>
+                    <p id="ipAddress" class="data">192.212.174.101</p>
+                </div>
+                <div>
+                    <p class="infoTitle">location</p>
+                    <p id="location" class="data"></p>
+                </div>
+                <div>
+                    <p class="infoTitle">timezone</p>
+                    <p id="timezone" class="data"></p>
+                </div>
+                <div>
+                    <p class="infoTitle">isp</p>
+                    <p id="isp" class="data"></p>
+                </div>
             </div>
-            <div>
-                <span class="infoTitle">location</span>
-                <span id="location"></span>
-            </div>
-            <div>
-                <span class="infoTitle">timezone</span>
-                <span id="timezone"></span>
-            </div>
-            <div>
-                <span class="infoTitle">isp/span>
-                    <span id="isp"></span>
-            </div>
-        </div>
-    </main>
-    <div id="map"></div>
+        </main>
+        <div id="map"></div>
+    </div>
 </body>
 
 </html>
