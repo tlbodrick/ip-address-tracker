@@ -1,5 +1,4 @@
 
-
 const inputForm = document.querySelector('#inputForm');
 const searchBar = document.querySelector('#searchBar');
 let ipAddress = document.querySelector('#ipAddress');
@@ -8,8 +7,12 @@ let timezone = document.querySelector('#timezone');
 let isp = document.querySelector('#isp');
 const apiKey = "at_QXUQ7J1x0Aie252R9m61SvQMbOhfm";
 
+// fetch user's ip address information on load
+window.addEventListener('load', e => {
+    fetchAPI();
+})
 
-// edit ip address with entered value
+// fetch ip address information on submit
 inputForm.addEventListener('submit', e => {
     e.preventDefault();
     fetchIPinfo();
@@ -17,22 +20,47 @@ inputForm.addEventListener('submit', e => {
 })
 
 
+
 const fetchAPI = async () => {
     try {
         const config = {
             params: {
                 apiKey: apiKey,
-                ipAddress: null
+                ipAddress: null,
             }
         }
         const res = await axios.get(`https://geo.ipify.org/api/v2/country,city`, config);
+
+        setApiInfo(res)
 
     } catch (e) {
         console.log(e)
     }
 }
 
-fetchAPI();
+
+const setApiInfo = (res) => {
+    // set ip 
+    ipAddress.innerText = res.data.ip;
+
+    // set location
+    const location = res.data.location;
+    cityState.innerText = `${location.city}, ${location.region}, ${location.postalCode}`;
+
+    // set timezone
+    const tz = res.data.location.timezone;
+    timezone.innerText = `UTC ${tz};`
+
+    // set isp 
+    const ispData = res.data.isp;
+    isp.innerText = ispData;
+
+    //set map
+    lat = location.lat;
+    lng = location.lng;
+    mymap.panTo(new L.LatLng(lat, lng));
+    var marker = L.marker([lat, lng]).addTo(mymap);
+}
 
 
 const fetchIPinfo = async () => {
@@ -45,25 +73,10 @@ const fetchIPinfo = async () => {
         }
         const res = await axios.get(`https://geo.ipify.org/api/v2/country,city`, config);
 
-        // set ip 
-        ipAddress.innerText = res.data.ip;
+        console.log(res)
 
-        // set location
-        const location = res.data.location;
-        cityState.innerText = `${location.city}, ${location.region}, ${location.postalCode}`;
+        setApiInfo(res)
 
-        // set timezone
-        const tz = res.data.location.timezone;
-        timezone.innerText = `UTC ${tz};`
-
-        // set isp 
-        const ispData = res.data.isp;
-        isp.innerText = ispData;
-
-        //set map
-        lat = location.lat;
-        lng = location.lng;
-        mymap.panTo(new L.LatLng(lat, lng));
 
     } catch (e) {
         console.log(e)
@@ -73,7 +86,8 @@ const fetchIPinfo = async () => {
 
 // map 
 
-var mymap = L.map('map').locate({ setView: true, maxZoom: 13 });
+var mymap = L.map('map').locate({ setView: true, maxZoom: 10 });
+
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
