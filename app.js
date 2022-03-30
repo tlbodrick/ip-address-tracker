@@ -55,9 +55,11 @@ const setApiInfo = (res) => {
     const ispData = res.data.isp;
     isp.innerText = ispData;
 
+    console.log(res.data)
+
     //set map
-    lat = location.lat;
-    lng = location.lng;
+    lat = res.data.location.lat;
+    lng = res.data.location.lng;
     mymap.panTo(new L.LatLng(lat, lng));
     var marker = L.marker([lat, lng]).addTo(mymap);
 }
@@ -67,13 +69,11 @@ const fetchIPinfo = async () => {
     try {
         const config = {
             params: {
-                apiKey: "at_QXUQ7J1x0Aie252R9m61SvQMbOhfm",
+                apiKey: "apiKey",
                 ipAddress: searchBar.value
             }
         }
         const res = await axios.get(`https://geo.ipify.org/api/v2/country,city`, config);
-
-        console.log(res)
 
         setApiInfo(res)
 
