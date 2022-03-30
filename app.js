@@ -40,6 +40,8 @@ const fetchAPI = async () => {
 
 
 const setApiInfo = (res) => {
+    console.log(res)
+
     // set ip 
     ipAddress.innerText = res.data.ip;
 
@@ -69,7 +71,7 @@ const fetchIPinfo = async () => {
     try {
         const config = {
             params: {
-                apiKey: "apiKey",
+                apiKey: apiKey,
                 ipAddress: searchBar.value
             }
         }
