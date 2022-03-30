@@ -80,6 +80,7 @@ main{
     box-shadow: 0 5px 30px -10px rgba(150,170,180,0.5);
 }
 
+
 @media (min-width: 60rem) {
     #trackInfo {
         flex-direction: row;
@@ -107,6 +108,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: .5rem;
 }
 
 .infoTitle {

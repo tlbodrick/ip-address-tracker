@@ -45,7 +45,7 @@ const setApiInfo = (res) => {
 
     // set location
     const location = res.data.location;
-    cityState.innerText = `${location.city}, ${location.region}, ${location.postalCode}`;
+    cityState.innerText = `${location.city}, ${location.region} ${location.postalCode}`;
 
     // set timezone
     const tz = res.data.location.timezone;
