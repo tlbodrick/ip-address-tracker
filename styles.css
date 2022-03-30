@@ -44,7 +44,8 @@ main{
 }
 
 #searchBar {
-    width: 270px;
+    width: 30vw;
+    min-width: 275px;
     height: 60px;
     border-radius: 15px 0 0 15px;
     margin-bottom: 24px;
