@@ -13,8 +13,8 @@
 body {
     font-family: 'Rubik', sans-serif;
     font-size: var(--bodyFont);
-    background: url('images/pattern-bg.png')no-repeat;
-    background-size: auto 250px;
+    background: url('images/pattern-bg.png') no-repeat;
+    background-size: 100% 20rem;
     width: 100%;
 }
 
