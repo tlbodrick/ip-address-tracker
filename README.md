@@ -4,7 +4,7 @@
 
 An IP Address tracker that allows users to use view their IP address, location, timezone, and ISP provider upon initial load. Users can use the search bar to look up any other IP Address or domain and view the same information. The location is displayed on an interactive map. 
 
-Currently built using IP Geolocation API and LeafletJS.
+Currently built using IP Geolocation API by IPify and LeafletJS.
 
 Design by: Frontend Mentor
 
